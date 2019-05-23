@@ -4,8 +4,8 @@
 <head>
 </head>
 
-<body class="comBg errorPage">
-	HELLO
+<body>
+hello
 </body>
 </html>
 
