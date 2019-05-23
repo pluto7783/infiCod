@@ -1,13 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!doctype html>
-<html lang="ko" class="ko">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<html>
 <head>
+	<title>Home</title>
 </head>
-
 <body>
-hello
+<script>
+	location.replace("main/index.do");
+</script>
 </body>
 </html>
-
-
-
