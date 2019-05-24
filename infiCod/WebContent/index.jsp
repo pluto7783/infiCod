@@ -6,7 +6,7 @@
 </head>
 <body>
 <script>
-	location.replace("main/index.do");
+	location.replace("main/home.do");
 </script>
 </body>
 </html>

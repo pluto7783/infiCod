@@ -1,32 +1,45 @@
 package com.infi.main;
 
-import java.util.Locale;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
-/**
- * Handles requests for the application home page.
- */
-@RequestMapping("main")
-@Controller
-public class MainController {
+import com.infi.main.api.service.MainService;
+
+public class MainController extends MultiActionController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "index.do", method = RequestMethod.GET)
-	public String index(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+	private MainService mainService;
+	
+	public void setMainService(MainService mainService) {
+		this.mainService = mainService;
+	}
+	
+	public ModelAndView goHome(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView("main/index");
+		System.out.println(123);
+		logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> goHome() start!");
 		
-		model.addAttribute("myMsg", "This page is Main." );
+		String message = mainService.setMessage(request.getParameter("A"));
 		
-		return "main/index";
+		logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> goHome() message property test :"+ message);
+		mv.addObject("message", message);
+
+		return mv;
+	}
+	
+	public ModelAndView goNext(HttpServletRequest request, HttpServletResponse response){
+		ModelAndView mv = new ModelAndView("main/next");
+		
+		logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> goNext() start!");
+		
+		return mv;
 	}
 }
