@@ -20,8 +20,8 @@ function imgRemove(){
 	});*/
 	
 	$("img").remove();
-
-	console.log("===== main inject.js 12 =====")
+	
+	console.log("===== main inject.js 13 =====")
 }
 
 window.onload = imgRemove;
