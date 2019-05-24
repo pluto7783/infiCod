@@ -16,6 +16,10 @@
     {
       "matches": ["http://*/*","https://*/*"],
       "js": ["js/jquery-3.4.1.min.js","js/inject.js"]
+    },
+    {
+      "matches": ["https://okky.kr/*"],
+      "js": ["content/okky/okky.js"]
     }
   	],
     "permissions": [

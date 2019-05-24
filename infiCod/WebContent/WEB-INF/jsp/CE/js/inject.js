@@ -1,4 +1,4 @@
-function onLoadFuc(){
+function imgRemove(){
 
 	/*$(function(){
 		if($("#topDiv")[0]){
@@ -21,7 +21,7 @@ function onLoadFuc(){
 	
 	$("img").remove();
 
-	console.log("===== 테스트 12 =====")
+	console.log("===== main inject.js 12 =====")
 }
 
-window.onload = onLoadFuc;
+window.onload = imgRemove;
