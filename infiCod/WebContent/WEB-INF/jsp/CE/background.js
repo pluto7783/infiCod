@@ -5,10 +5,19 @@
 //		});
 //	}
 //)
-var enable=true;
+var enable=false;
 /*chrome.storage.local.set({"foo":"woo"},function(){
-	console.log(123)
 });*/
+console.log(123)
+
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    console.log(sender.tab ?
+                "from a content script:" + sender.tab.url :
+                "from the extension");
+    if (request.check == "on")
+      sendResponse({check: enable});
+});
 
 chrome.browserAction.onClicked.addListener(function (tab) {
 	enable = enable ? false : true;
@@ -16,15 +25,11 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 	//turn on...
 		chrome.browserAction.setIcon({ path: 'iconon.png' });
 		chrome.browserAction.setBadgeText({ text: 'ON' });
-//		chrome.storage.local.set({"on":"on"},function(){
-//			chrome.tabs.executeScript({code : 'var chromeExtensionActiveVal = true'}); 
-//		});
+		console.log("on/off :"+enable)
 	}else{
 	//turn off...
 		chrome.browserAction.setIcon({ path: 'iconoff.png'});
 		chrome.browserAction.setBadgeText({ text: 'OFF' });
-//		chrome.storage.local.set({"on":"off"},function(){
-//			chrome.tabs.executeScript({code : 'var chromeExtensionActiveVal = false'}); 
-//		});
+		console.log("on/off :"+enable)
 	}
 });

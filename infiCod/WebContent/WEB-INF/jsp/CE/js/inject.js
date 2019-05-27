@@ -19,7 +19,15 @@ function imgRemove(){
 		console.log("===== 테스트 009 =====")
 	});*/
 	
-	$("img").remove();
+//	$("img").remove();
+	chrome.runtime.sendMessage({check: "on"}, function(response) {
+		  console.log(response.check);
+		  if(response.check){
+			  console.log("on")
+		  }else{
+			  console.log("off")
+		  }
+	});
 	
 	console.log("===== main inject.js 13 =====")
 }
