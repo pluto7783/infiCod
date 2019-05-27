@@ -21,7 +21,6 @@ function imgRemove(){
 	
 //	$("img").remove();
 	chrome.runtime.sendMessage({check: "on"}, function(response) {
-		  console.log(response.check);
 		  if(response.check){
 			  console.log("on")
 		  }else{

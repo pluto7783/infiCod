@@ -8,7 +8,6 @@
 var enable=false;
 /*chrome.storage.local.set({"foo":"woo"},function(){
 });*/
-console.log(123)
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
@@ -25,11 +24,11 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 	//turn on...
 		chrome.browserAction.setIcon({ path: 'iconon.png' });
 		chrome.browserAction.setBadgeText({ text: 'ON' });
-		console.log("on/off :"+enable)
+		console.log("on/off :"+(enable?"on":"off"))
 	}else{
 	//turn off...
 		chrome.browserAction.setIcon({ path: 'iconoff.png'});
 		chrome.browserAction.setBadgeText({ text: 'OFF' });
-		console.log("on/off :"+enable)
+		console.log("on/off :"+(enable?"on":"off"))
 	}
 });
