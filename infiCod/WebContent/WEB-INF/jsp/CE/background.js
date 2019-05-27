@@ -6,8 +6,6 @@
 //	}
 //)
 var enable=false;
-/*chrome.storage.local.set({"foo":"woo"},function(){
-});*/
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
@@ -16,9 +14,30 @@ chrome.runtime.onMessage.addListener(
                 "from the extension");
     if (request.check == "on")
       sendResponse({check: enable});
+    if (request.check == "clickOn"){
+    	enable = true;
+    	chrome.browserAction.setIcon({ path: 'iconon.png' });
+		chrome.browserAction.setBadgeText({ text: 'ON' });
+		console.log("on/off :"+(enable?"on":"off"))
+		sendResponse({check: enable});
+    }
+    if (request.check == "clickOff"){
+    	enable = false;
+    	chrome.browserAction.setIcon({ path: 'iconoff.png'});
+		chrome.browserAction.setBadgeText({ text: 'OFF' });
+		sendResponse({check: enable});
+    }
+    if (request.check == "removeIfr"){
+    	chrome.tabs.executeScript(null, { file: "content/ifr/ifr.js" });
+    	sendResponse({check: enable});
+    }
+    if (request.check == "removeImg"){
+    	chrome.tabs.executeScript(null, { file: "content/img/img.js" });
+    	sendResponse({check: enable});
+    }
 });
 
-chrome.browserAction.onClicked.addListener(function (tab) {
+/*chrome.browserAction.onClicked.addListener(function (tab) {
 	enable = enable ? false : true;
 	if(enable){
 	//turn on...
@@ -31,4 +50,4 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 		chrome.browserAction.setBadgeText({ text: 'OFF' });
 		console.log("on/off :"+(enable?"on":"off"))
 	}
-});
+});*/
