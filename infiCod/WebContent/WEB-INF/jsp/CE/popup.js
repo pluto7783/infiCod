@@ -10,30 +10,26 @@ document.getElementById("on").onclick = function(){
 
 document.getElementById("off").onclick = function(){
 	chrome.runtime.sendMessage({check: "clickOff"}, function(response) {
-		/*if(response.check){
-			  document.getElementById("on").style.backgroundColor = "black";
-		  }else{
-			  document.getElementById("on").style.backgroundColor = "white";
-		  }*/
+		
 	});
 }
 
 document.getElementById("removeIfr").onclick = function(){
-	chrome.runtime.sendMessage({check: "removeIfr"}, function(response) {
-		/*if(response.check){
-			  document.getElementById("on").style.backgroundColor = "black";
-		  }else{
-			  document.getElementById("on").style.backgroundColor = "white";
-		  }*/
+	/*chrome.runtime.sendMessage({check: "removeIfr"}, function(response) {
+	});*/
+	chrome.tabs.query({active:true, currentWindow:true},function(tabs){
+		chrome.tabs.executeScript(
+			tabs[0].id,
+			{ file: "content/ifr/ifr.js" }
+		)
 	});
 }
 
 document.getElementById("removeImg").onclick = function(){
-	chrome.runtime.sendMessage({check: "removeImg"}, function(response) {
-		/*if(response.check){
-			  document.getElementById("on").style.backgroundColor = "black";
-		  }else{
-			  document.getElementById("on").style.backgroundColor = "white";
-		  }*/
+	chrome.tabs.query({active:true, currentWindow:true},function(tabs){
+		chrome.tabs.executeScript(
+				tabs[0].id,
+				{ file: "content/img/img.js" }
+		)
 	});
 } 
