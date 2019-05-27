@@ -28,8 +28,21 @@ document.getElementById("removeIfr").onclick = function(){
 document.getElementById("removeImg").onclick = function(){
 	chrome.tabs.query({active:true, currentWindow:true},function(tabs){
 		chrome.tabs.executeScript(
+			tabs[0].id,
+			{ file: "content/img/img.js" }
+		)
+	});
+}
+
+document.getElementById("remote").onclick = function(){
+	chrome.runtime.sendMessage({check: "remoteSwich"}, function(response) {
+		
+	});
+	
+	chrome.tabs.query({active:true, currentWindow:true},function(tabs){
+		chrome.tabs.executeScript(
 				tabs[0].id,
-				{ file: "content/img/img.js" }
+				{ file: "content/remocon/remocon.js" }
 		)
 	});
 } 

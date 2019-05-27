@@ -6,6 +6,7 @@
 //	}
 //)
 var enable=false;
+var remoteVal = false;
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
@@ -25,6 +26,13 @@ chrome.runtime.onMessage.addListener(
     	chrome.browserAction.setIcon({ path: 'iconoff.png'});
 		chrome.browserAction.setBadgeText({ text: 'OFF' });
 		sendResponse({check: enable});
+    }
+    if (request.check == "remoteOn"){
+    	sendResponse({check: remoteVal});
+    }
+    if (request.check == "remoteSwich"){
+    	remoteVal = !remoteVal;
+    	sendResponse({check: remoteVal});
     }
    /* if (request.check == "removeImg"){
     	chrome.tabs.executeScript(null, { file: "content/img/img.js" });
