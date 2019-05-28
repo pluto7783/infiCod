@@ -14,3 +14,11 @@ var ifrlength = ifr.length;
 for (var i = 0; i < ifrlength; i++){
 	ifr[0].remove();
 }
+
+//페이지 모든 element border줘서 구분할수있게
+/*$("*").each(function (){
+	$(this).css("border","1px solid #eee")
+})*/
+
+var a = document.querySelectorAll("*");
+a.forEach(function(aa){aa.style.border = "1px solid #eee"})
