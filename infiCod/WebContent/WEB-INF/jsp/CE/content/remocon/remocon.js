@@ -31,9 +31,9 @@ chrome.runtime.sendMessage({check: "remoteOn"}, function(response) {
 		  }
 		  
 		  var div = createElement("div", {id:"remoteConDiv"
-			  							, style:{width:"100px" ,height:"100px"
-			  								    ,border:"1px solid black" ,position:"fixed"
-			  								    ,bottom:"100px",right:"100px"}});
+			  							, style:{width:"100px", height:"100px"
+			  								    ,border:"1px solid black", position:"fixed"
+			  								    ,bottom:"100px", right:"100px"}});
 		  document.body.append(div)
 	  }
 });

@@ -22,3 +22,6 @@ for (var i = 0; i < ifrlength; i++){
 
 var a = document.querySelectorAll("*");
 a.forEach(function(aa){aa.style.border = "1px solid #eee"})
+
+//페이지 제일 아래로
+window.scrollBy(0,document.body.offsetHeight)

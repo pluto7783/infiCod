@@ -14,7 +14,7 @@ for (var i = 0; i < imglength; i++){
  */
 var img2 = document.querySelectorAll("img")
 img2.forEach(function(img){
-	img.remove();  
+	img.src = "";  
 })
 
 window.onload = onLoadFuc;
