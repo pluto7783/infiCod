@@ -10,6 +10,11 @@ chrome.runtime.sendMessage({check: "on"}, function(response) {
 		  $(".main-banner-wrapper").remove();
 		  $(".sidebar-category-nav").css("backgroundColor","#d8d8d8");
 		  $(".sidebar").css("backgroundColor","#d8d8d8");
+		  
+		  var ifr = document.querySelectorAll("iframe")
+		  ifr.forEach(function(r){
+		    r.remove();  
+		  })
 	  }
 });
 

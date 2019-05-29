@@ -146,11 +146,6 @@ var remotecon = {
 		    }
 		}
 	},
-	/*viewerOn : function(){
-		console.log("=================뷰어 ON=====================")
-		$(".show_viewer").trigger("click");
-		console.log("=================뷰어 ON=====================")
-	},*/
 	autoPage : function(){
 		if(checkScroll){
 			console.log("=================다른스크롤 동작중=====================")
