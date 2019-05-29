@@ -7,21 +7,15 @@
 	<title>MAIN</title>
 <jsp:include page="../header.jsp"></jsp:include>
 <script>
-	$(function(){
-		
-		
-	});
+
 </script>
 </head>
 <body>
 <div class="contentBody">
 <jsp:include page="../navbar.jsp"></jsp:include>
 <h1>
-	${myMsg}  
+	${message }  
 </h1>
-
-
-
 
 </div>	
 </body>

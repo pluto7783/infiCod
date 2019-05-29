@@ -24,22 +24,12 @@ public class MainController extends MultiActionController {
 	
 	public ModelAndView goHome(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView("main/index");
-		System.out.println(123);
 		logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> goHome() start!");
 		
-		String message = mainService.setMessage(request.getParameter("A"));
+		String message = "HOME";
 		
-		logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> goHome() message property test :"+ message);
 		mv.addObject("message", message);
 
-		return mv;
-	}
-	
-	public ModelAndView goNext(HttpServletRequest request, HttpServletResponse response){
-		ModelAndView mv = new ModelAndView("main/next");
-		
-		logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> goNext() start!");
-		
 		return mv;
 	}
 }

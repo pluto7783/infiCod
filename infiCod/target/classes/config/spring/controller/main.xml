@@ -27,7 +27,6 @@
 		<property name="mappings">
 			<props>
 				<prop key="/main/home.do">goHome</prop>
-				<prop key="/main/next.do">goNext</prop>
 			</props>
 		</property>
 	</bean>
