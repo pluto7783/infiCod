@@ -9,21 +9,42 @@
 -->
 <script>
 var vueApp;
+var vueApp2;
 window.onload = function (){
 	vueApp = new Vue({
 			el: '#app',
 			data: {
 			message: '안녕하세요 Vue!',
 			message2: '안녕못하오',
-			seen :  true
+			seen :  true,
+			todo : [{text:"처음"},
+					{text1:"두번"}
+	               ]
 		}
-	})	
+	});
+	
+	vueApp2 = new Vue({
+			el: '#app2',
+			data: {
+			todos : {text:"처음",
+					text1:"두번"}
+		}
+	});
+	
+	Vue.set(vueApp2.todos,"text3","삼번째");
 }
 </script>
 </head>
 <body>
 	<div id="app" v-bind:title="message2" v-if="seen">
 		{{ message }}
+	</div>
+	<div id="app2">
+		<ul>
+			<li v-for="(value, key,index) in todos">
+				{{ index }}.{{ value }} {{ key }} 
+			</li>
+		</ul>
 	</div>
 </body>
 </html>
