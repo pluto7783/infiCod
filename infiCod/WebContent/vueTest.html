@@ -14,21 +14,34 @@ window.onload = function (){
 	vueApp = new Vue({
 			el: '#app',
 			data: {
-			message: '안녕하세요 Vue!',
-			message2: '안녕못하오',
-			seen :  true,
-			todo : [{text:"처음"},
-					{text1:"두번"}
+				message: '안녕하세요 Vue!',
+				message2: '안녕못하오',
+				seen :  true,
+				todo : [{text:"처음"},
+						{text1:"두번"}
 	               ]
-		}
+			},
+			methods: {
+				reverseMessage: function (){
+					console.log(1234)
+					this.message = this.message.split('').reverse().join('');
+				}
+			}
 	});
 	
 	vueApp2 = new Vue({
 			el: '#app2',
 			data: {
-			todos : {text:"처음",
-					text1:"두번"}
-		}
+				todos : {text:"처음",
+						text1:"두번"},
+				  },						
+			methods: {
+				testMethod: function (){
+					console.log(123);
+					console.log(this.todos.value);
+					this.value = this.key;
+				}	
+			}
 	});
 	
 	Vue.set(vueApp2.todos,"text3","삼번째");
@@ -36,13 +49,15 @@ window.onload = function (){
 </script>
 </head>
 <body>
-	<div id="app" v-bind:title="message2" v-if="seen">
+	<div id="app" v-bind:title="message2" v-if="seen" v-on:click="reverseMessage">
 		{{ message }}
 	</div>
 	<div id="app2">
 		<ul>
-			<li v-for="(value, key,index) in todos">
-				{{ index }}.{{ value }} {{ key }} 
+			<li v-for="(value, key,index) in todos" v-on:click="testMethod">
+				{{ index }} {{ key }}
+				<p>{{ value }}</p> 
+				<input v-model="value"/>
 			</li>
 		</ul>
 	</div>
