@@ -12,8 +12,7 @@ for (var i = 0; i < imglength; i++){
 /**
  * querySelectAll 셀렉터를 이용한 제거 ;
  */
-var img2 = document.querySelectorAll("img")
-img2.forEach(function(img){
+document.querySelectorAll("img").forEach(function(img){
 	img.src = "";  
 })
 

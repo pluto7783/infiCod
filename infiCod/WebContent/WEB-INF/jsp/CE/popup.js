@@ -34,6 +34,15 @@ document.getElementById("removeImg").onclick = function(){
 	});
 }
 
+document.getElementById("drag").onclick = function(){
+	chrome.tabs.query({active:true, currentWindow:true},function(tabs){
+		chrome.tabs.executeScript(
+				tabs[0].id,
+				{ file: "content/drag/drag.js" }
+		)
+	});
+}
+
 document.getElementById("remote").onclick = function(){
 	chrome.runtime.sendMessage({check: "remoteSwich"}, function(response) {
 		
