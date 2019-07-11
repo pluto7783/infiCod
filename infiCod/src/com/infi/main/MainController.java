@@ -1,12 +1,14 @@
 package com.infi.main;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
@@ -22,14 +24,22 @@ public class MainController extends MultiActionController {
 		this.mainService = mainService;
 	}
 	
-	public ModelAndView goHome(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView goHome(HttpServletRequest request, HttpServletResponse response, @RequestParam(value="aa", defaultValue="false") String aa) {
 		ModelAndView mv = new ModelAndView("main/index");
 		logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> goHome() start!");
+		logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> request.getParameter? '"+request.getParameter("param")+"'");
+		logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> @RequestParam? '"+aa+"'");
 		
 		String message = "HOME";
 		
 		mv.addObject("message", message);
 
 		return mv;
+	}
+	
+	@ResponseBody
+	public String testAjax(HttpServletRequest request, HttpServletResponse response){
+		logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> request.getParameter? '"+request.getParameter("param")+"'");
+		return request.getParameter("param");
 	}
 }

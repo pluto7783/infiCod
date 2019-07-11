@@ -27,6 +27,7 @@
 		<property name="mappings">
 			<props>
 				<prop key="/main/home.do">goHome</prop>
+				<prop key="/main/testAjax.do">testAjax</prop>
 			</props>
 		</property>
 	</bean>
