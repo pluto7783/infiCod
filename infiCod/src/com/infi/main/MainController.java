@@ -1,6 +1,7 @@
 package com.infi.main;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
@@ -37,9 +37,20 @@ public class MainController extends MultiActionController {
 		return mv;
 	}
 	
-	@ResponseBody
-	public String testAjax(HttpServletRequest request, HttpServletResponse response){
+	public void testAjax(HttpServletRequest request, HttpServletResponse response){
 		logger.debug(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> request.getParameter? '"+request.getParameter("param")+"'");
-		return request.getParameter("param");
+		
+		returnAjax(request.getParameter("param"), response);
+	}
+	
+	public void returnAjax(String aa, HttpServletResponse response){
+		PrintWriter pw;
+		try {
+			pw = response.getWriter();
+			pw.print(aa);
+			pw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
