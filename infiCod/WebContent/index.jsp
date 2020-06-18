@@ -7,7 +7,6 @@
 <body>
 <script>
 	location.replace("main/home.do");
-	console.log(1234)
 </script>
 </body>
 </html>
